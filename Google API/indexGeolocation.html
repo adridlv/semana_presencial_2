@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+	<div id="map" style="width: 500px; height: 400px;"></div>
+	<script>
+	var options = {enableHighAccuracy: true};
+	var watchOptions = {enableHighAccuracy: true};
+
+	if("geolocation" in navigator){
+		console.log("geolocation is available");
+		navigator.geolocation.getCurrentPosition(onLocation, onError, options);
+	}else{
+		console.log("geolocation IS NOT available");
+	}
+	function onLocation(position){
+		console.log("Your latitude is " + position.coords.latitude);
+		console.log("Your longitude is " + position.coords.longitude);
+		document.getElementById('map').innerHTML = "Lat: " + position.coords.latitude + ", lon: "+position.coords.longitude
+	}
+
+	function onError(error){
+		console.error(error);
+	}
+	</script>
+	
+</body>
+</html>
